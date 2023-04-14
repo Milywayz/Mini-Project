@@ -6,24 +6,23 @@ fetch("https://www.loc.gov/search/?q=baseball&fo=json")
     return response.json()
 })
 .then(function(data){
-console.log(data)
-
-})
-
-for (let i = 0; i < data.results.length; i++) {
-       
+    console.log(data)
+    
+    for (let i = 0; i < data.results.length; i++) {
+           
+            
+        let titleEl = document.createElement("p")
+        titleEl.textContent = data.results[i].title;
+    
+        document.body.appendChild(titleEl);
         
-    let titleEl = document.createElement("p")
-    titleEl.textContent = data.results[i].title;
-
-    document.body.appendChild(titleEl);
+        
+        let urlEl = document.createElement("a");
+        urlEl.textContent = data.results[i].url;
+        urlEl.href = data.results[i].url;
     
-    
-    let urlEl = document.createElement("a");
-    urlEl.textContent = data.results[i].url;
-    urlEl.href = data.results[i].url;
-
-    document.body.appendChild(titleEl);
-    document.body.appendChild(urlEl);
-    
-}
+        document.body.appendChild(titleEl);
+        document.body.appendChild(urlEl);
+        
+    }
+})
